@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+      <dl>
+        <dt>Plant:
+        <dd><input type="text" size="30" name="plant">
+        <dt>Temperature:
+        <dd><input type="text" size="30" name="temperature">
+		<dt>Light Intensity:
+		<dd><input type="text" size="30" name="water">
+		<dt>Water Content
+		<dd><input type="text" size="30" name="light_intensity">
+        <dd><input type="submit" value="Share">
+      </dl>
+    </form>
+  <ul class="entries">
+  <p>entry 0: {{entries[0].set_water}}</p>
+  {% for entry in entries %}
+	<p>{{entry}}</p>
+    <li><h1>{{ entry.plant }}</h1>
+	<h1>{{entry.id}}</h1>
+	<h2>{{ entry.set_temperature }}</h2>
+	<h2>{{ entry.set_water }}</h2>
+	<h2>{{ entry.set_light }}</h2>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
